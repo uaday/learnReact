@@ -9,7 +9,9 @@ function MenuItem({ name }: { name: string }) {
 				transition: "background-color 0.3s",
 				fontWeight: "bold",
 			}}
+			//@ts-ignore
 			onMouseEnter={(e) => (e.target.style.backgroundColor = "#f0f0f0")}
+			//@ts-ignore
 			onMouseLeave={(e) => (e.target.style.backgroundColor = "transparent")}
 		>
 			{name}
