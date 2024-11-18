@@ -1,3 +1,4 @@
+import Button, { ButtonVarient } from "./components/Button/button";
 import Footer from "./components/Footer/footer";
 import Header from "./components/Header/header";
 
@@ -31,6 +32,16 @@ export default function App() {
 				</div>
 				<div style={{ border: "1px solid white", padding: "10px" }}>Sylhet</div>
 			</div>
+
+			<div className="button">
+				<Button varient={ButtonVarient.secondary}>Button</Button>
+				<Button varient={ButtonVarient.outline}>Button</Button>
+				<Button varient={ButtonVarient.link}>Button</Button>
+				<button style={{ backgroundColor: "green" }}>Button</button>
+				<button style={{ backgroundColor: "blue" }}>Button</button>
+				<button style={{ backgroundColor: "yellow" }}>Button</button>
+			</div>
+
 			<Footer />
 		</div>
 	);
