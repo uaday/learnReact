@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Button, { ButtonVarient } from "./components/Button/button";
 import Counter from "./components/Counter/counter";
 import DynamicList from "./components/DynamicList/dynamicList";
@@ -5,8 +6,26 @@ import Footer from "./components/Footer/footer";
 import Form from "./components/Form/form";
 import Header from "./components/Header/header";
 import ToggleContent from "./components/ToggleContent/toggleContent";
+import Home from "./pages/home";
+import About from "./pages/about";
+import Contact from "./pages/contact";
 
 export default function App() {
+	const [currentPage, setCurrentPage] = useState("home");
+
+	const renderPage = () => {
+		switch (currentPage) {
+			case "home":
+				return <Home />;
+			case "about":
+				return <About />;
+			case "contact":
+				return <Contact />;
+			default:
+				return <Home />;
+		}
+	};
+
 	return (
 		<div>
 			{/* <Header />
@@ -48,10 +67,20 @@ export default function App() {
 
 			<Footer /> */}
 
-			<Counter />
+			{/* <Counter />
 			<Form />
 			<ToggleContent />
-			<DynamicList />
+			<DynamicList /> */}
+
+			<div>
+				<nav>
+					<button onClick={() => setCurrentPage("home")}>Home</button>
+					<button onClick={() => setCurrentPage("about")}>About</button>
+					<button onClick={() => setCurrentPage("contact")}>Contact</button>
+				</nav>
+				<hr />
+				<div>{renderPage()}</div>
+			</div>
 		</div>
 	);
 }
