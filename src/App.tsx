@@ -1,11 +1,15 @@
 import Button, { ButtonVarient } from "./components/Button/button";
+import Counter from "./components/Counter/counter";
+import DynamicList from "./components/DynamicList/dynamicList";
 import Footer from "./components/Footer/footer";
+import Form from "./components/Form/form";
 import Header from "./components/Header/header";
+import ToggleContent from "./components/ToggleContent/toggleContent";
 
 export default function App() {
 	return (
 		<div>
-			<Header />
+			{/* <Header />
 			<div className="Sliders">
 				<img
 					src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
@@ -42,7 +46,12 @@ export default function App() {
 				<button style={{ backgroundColor: "yellow" }}>Button</button>
 			</div>
 
-			<Footer />
+			<Footer /> */}
+
+			<Counter />
+			<Form />
+			<ToggleContent />
+			<DynamicList />
 		</div>
 	);
 }

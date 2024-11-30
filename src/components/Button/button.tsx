@@ -1,9 +1,10 @@
 import React from "react";
 
-export interface ButtonProps {
+export interface ButtonProps
+	extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	children: React.ReactNode;
 	varient?: ButtonVarient;
-	shape?: string;
+	shape?: ButtonShape;
 	styles?: React.CSSProperties;
 }
 
@@ -57,9 +58,13 @@ function Button({
 	varient = ButtonVarient.primary,
 	shape = ButtonShape.square,
 	styles,
+	...props
 }: ButtonProps) {
 	return (
-		<button style={{ ...buttonVarients[varient], ...buttonShapes[shape] }}>
+		<button
+			style={{ ...buttonVarients[varient], ...buttonShapes[shape] }}
+			{...props}
+		>
 			{children}
 		</button>
 	);
