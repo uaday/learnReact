@@ -9,22 +9,10 @@ import ToggleContent from "./components/ToggleContent/toggleContent";
 import Home from "./pages/home";
 import About from "./pages/about";
 import Contact from "./pages/contact";
+import { BrowserRouter, Link, Route, Routes } from "react-router";
 
 export default function App() {
 	const [currentPage, setCurrentPage] = useState("home");
-
-	const renderPage = () => {
-		switch (currentPage) {
-			case "home":
-				return <Home />;
-			case "about":
-				return <About />;
-			case "contact":
-				return <Contact />;
-			default:
-				return <Home />;
-		}
-	};
 
 	return (
 		<div>
@@ -72,15 +60,22 @@ export default function App() {
 			<ToggleContent />
 			<DynamicList /> */}
 
-			<div>
-				<nav>
-					<button onClick={() => setCurrentPage("home")}>Home</button>
-					<button onClick={() => setCurrentPage("about")}>About</button>
-					<button onClick={() => setCurrentPage("contact")}>Contact</button>
-				</nav>
-				<hr />
-				<div>{renderPage()}</div>
-			</div>
+			<BrowserRouter>
+				<div>
+					<nav>
+						{/* Navigation Links */}
+						<Link to="/">Home</Link> | <Link to="/about">About</Link> |{" "}
+						<Link to="/contact">Contact</Link>
+					</nav>
+					<hr />
+					{/* Define Routes */}
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/about" element={<About />} />
+						<Route path="/contact" element={<Contact />} />
+					</Routes>
+				</div>
+			</BrowserRouter>
 		</div>
 	);
 }
