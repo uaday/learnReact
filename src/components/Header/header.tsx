@@ -1,6 +1,6 @@
 import React from "react";
-import MenuItem from "./components/menuItem";
-import MenuWrapper from "./components/menuWrapper";
+import MenuItem from "./menuItem";
+import MenuWrapper from "./menuWrapper";
 
 function Header() {
 	return (
@@ -11,21 +11,13 @@ function Header() {
 				justifyContent: "space-between",
 				alignItems: "center",
 				width: "100vw",
+				background: "#d6d3d2",
 			}}
 		>
-			{/* logo */}
-			<img
-				src="https://marketplace.canva.com/EAFaFUz4aKo/2/0/1600w/canva-yellow-abstract-cooking-fire-free-logo-JmYWTjUsE-Q.jpg"
-				alt="logo"
-				style={{
-					width: "50px",
-					height: "50px",
-				}}
-			/>
+			<h2>My todo App</h2>
 			<MenuWrapper>
-				<MenuItem name="Home" />
-				<MenuItem name="About" />
-				<MenuItem name="Sign In / Sign up" />
+				<MenuItem name="Home" link="/" />
+				<MenuItem name="History" link="/history" />
 			</MenuWrapper>
 		</div>
 	);
