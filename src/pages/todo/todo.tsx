@@ -1,17 +1,7 @@
-import { Button } from "@/components/ui/button";
-import {
-	Card,
-	CardDescription,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import React, { createContext, useEffect } from "react";
+import React, { createContext } from "react";
 import TodoForm from "./components/todoForm";
 import Todos from "./components/todos";
+import { useTodo } from "@/pages/todo/hooks/useTodo";
 
 export interface ITodo {
 	title: string;
@@ -33,65 +23,14 @@ export interface ITodoContext {
 export const TodoContext = createContext<any>(null);
 
 function Todo() {
-	const [todoForm, setTodoForm] = React.useState<ITodo>({
-		title: "",
-		description: "",
-		completed: false,
-		createdAt: new Date(),
-		compltedAt: new Date(),
-	});
-
-	const [todoList, setTodoList] = React.useState<ITodo[]>([]);
-
-	const saveTodo = (todoList: ITodo[]) => {
-		localStorage.setItem("todo", JSON.stringify(todoList));
-	};
-
-	const getTodos = () => {
-		const data = localStorage.getItem("todo");
-		if (data) {
-			const parseTodoData = JSON.parse(data);
-			setTodoList(parseTodoData);
-		}
-	};
-
-	useEffect(() => {
-		console.log("Page render completed");
-		getTodos();
-
-		return () => {
-			console.log("Page leaving");
-		};
-	}, []);
-
-	const handleCompleteTask = (index: number) => {
-		const updatedTodoList = [...todoList];
-		updatedTodoList[index].completed = !updatedTodoList[index].completed;
-		setTodoList(updatedTodoList);
-		saveTodo(updatedTodoList);
-	};
-
-	const handleDeleteTask = (index: number) => {
-		const updatedTodoList = [...todoList];
-		updatedTodoList.splice(index, 1);
-		setTodoList(updatedTodoList);
-		saveTodo(updatedTodoList);
-	};
-
-	const formRest = () => {
-		setTodoForm({
-			title: "",
-			description: "",
-			completed: false,
-		});
-	};
-
-	const formSubmit = () => {
-		const updatedTodoList = [todoForm, ...todoList];
-		setTodoList(updatedTodoList);
-		saveTodo(updatedTodoList);
-		formRest();
-	};
+	const {
+		todoForm,
+		todoList,
+		setTodoForm,
+		handleCompleteTask,
+		handleDeleteTask,
+		formSubmit,
+	} = useTodo();
 
 	return (
 		<TodoContext.Provider
