@@ -1,4 +1,5 @@
 import { useLocalStorage } from "@/hooks/useStorage";
+import { getTodoData } from "@/services/todo";
 import { useEffect, useState } from "react";
 
 export interface ITodo {
@@ -24,8 +25,8 @@ export const useTodo = () => {
 		setValue(todoList);
 	};
 
-	const getTodos = () => {
-		const data = value;
+	const getTodos = async () => {
+		const data = await getTodoData();
 		if (data) {
 			setTodoList(data);
 		}

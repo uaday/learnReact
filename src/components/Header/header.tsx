@@ -12,6 +12,7 @@ function Header() {
 				alignItems: "center",
 				width: "100vw",
 				background: "#d6d3d2",
+				padding: "0px 20px",
 			}}
 		>
 			<h2>My todo App</h2>
